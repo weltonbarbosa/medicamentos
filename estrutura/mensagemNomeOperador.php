@@ -9,10 +9,7 @@
 </head>
 <body>
     
-
-
 <?php
-
 
 $codigoUsuarioLogado =  $_SESSION['logado'];
 
@@ -34,7 +31,7 @@ $dados = mysqli_fetch_assoc($query);
 <!------------------------------------------------>
 <div id="mensagemOperador" >
   <div class="alert alert-primary" role="alert">
-    <?php echo "Olá, <strong> " . $dados['nome_operador']  . " </strong>, seja muito bem vindo(a)! São: " . date(' h:m:s \d\e d/m/Y') . ".";?>
+    <?php echo "Seja bem-vindo(a), <strong>" . $dados['nome_operador']. "</strong>.";?>
   </div>
 </div>
 
@@ -46,14 +43,7 @@ $dados = mysqli_fetch_assoc($query);
     }
 </style>
 
-
-
-
 <!------------------------------------------------>
-
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
