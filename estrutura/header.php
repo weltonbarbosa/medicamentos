@@ -5,7 +5,7 @@
 
 <header id="topo">
 
-<h1 class="display-4" href="index.php"><a href="index.php">Medicamentos</a></h1>
+<h1 class="display-4" href="index.php"><a href="index.php">Sismed</a></h1>
 
 
 </header>
@@ -16,7 +16,8 @@
     #topo{
         width: 100%;
         height: 170px;
-        background-color: #2d6a4f;
+        background-image: linear-gradient(to top, #52b788, #2d6a4f);
+        /*background-color: #2d6a4f;*/
         color: white;
         display: flex;
         justify-content:space-evenly;
