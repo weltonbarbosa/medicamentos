@@ -38,10 +38,10 @@
     <!--Informações do paciente-->
     <h3>Informações do Paciente</h3>
     <label>Nome completo do paciente:</label><br>
-    <input type="text" name="nomeDoPaciente" id="label1" required><br><br>
+    <input type="text" name="nomeDoPaciente"   class="form-control" required><br>
 
     <label>Nome completo da mãe do paciente:</label><br>
-    <input type="text" name="maeDoPaciente" id="label1" required><br><br>
+    <input type="text" name="maeDoPaciente"  class="form-control" required><br>
 
     <label>CPF do paciente:</label><br>
     <input type="text" name="cpfDoPaciente" required><br><br>
@@ -123,8 +123,14 @@
 
 <!--Estilos da página em questão-->
 <style>
+
+    body{
+        background-color: #d8f3dc;
+    }
+
     #formulario-solicitacao-requisicao{
         padding: 18px;
+        background-image: linear-gradient(to left, white, #d8f3dc 80%, white)
     }
 
     input{

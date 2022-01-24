@@ -24,8 +24,9 @@
     //Incluir o header da página
 
     include_once('estrutura/header.php');
-    include_once('estrutura/mensagemNomeOperador.php');
     include_once('estrutura/nav-operador.html');
+    include_once('estrutura/mensagemNomeOperador.php');
+    
 ?>
 
 <!--criando nossa paginação-->
@@ -77,8 +78,6 @@ $query = mysqli_query($conexao, $sql);
 
 while($nomeMostrar = mysqli_fetch_assoc($query)):
 
-echo "Seja bem vindo(a), " . $nomeMostrar['nome_operador'] . ".";
-
 endwhile;
 
 ?>
@@ -86,7 +85,7 @@ endwhile;
 <!---------------------------------------------------------------------------------------->
 
 <!-------------------------------------------->
-<table class="table table-hover">
+<table class="table table-success table-striped" id="tabela-principal">
   <thead class="table-dark">
     <tr>
       <th scope="col">Cód</th>
@@ -95,11 +94,10 @@ endwhile;
       <th scope="col">Data de Nasc.</th>
       <th scope="col">Medicamento</th>
       <th scope="col">Data de Emissão</th>
-      <th scope="col">Status</th>
+      <th scope="col">Ações</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
-
 
     <?php
         if(!empty($_SESSION['logado'])):
@@ -129,13 +127,13 @@ endwhile;
                 <td><?php echo date('d/m/Y', strtotime($dados['nascimento_paciente']));?></td>
                 <td><?php echo $dados['nome_medicamento'];?></td>
                 <td><?php echo $dados['quant_medicamento'];?></td>
-                <td><?php echo date('d/m/Y', strtotime($dados['data_emissao_requisicao']));?></td>
                 <td><?php echo $dados['status_requisicao'];?></td>
                 <td>
                     <a href="modificar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>" ><input type="submit" value="Editar" name="editar-req" class="btn btn-warning"></a>  
+                    <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Deletar"  name="deletar-req" class="btn btn-danger"></a>
                     <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Deletar"  name="deletar-req" class="btn btn-danger"></a>  
                     <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Entregar" name="entregar-med" class="btn btn-success"></td></a>
-                    <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="I" name="entregar-med" class="btn btn-info"></td></a>
+                
                 </td>
             </tr>
         </tbody>
@@ -150,22 +148,6 @@ endwhile;
 
 </table>
 
-    <!--Pagiação-->
-    <nav aria-label="...">
-    <ul class="pagination">
-        <li class="page-item disabled">
-        <a class="page-link">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active" aria-current="page">
-        <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-    </nav>
 </main>
 
 
@@ -181,6 +163,10 @@ endwhile;
 
 <!--estiolos da página-->
 <style>
+
+#tabela-principal{
+    text-align: center !important;
+}
 
 #req-deletada{
     background-color: #c44536;
@@ -274,6 +260,9 @@ endwhile;
         padding: 25px;
     }
 
+    body{
+        background-color: #d8f3dc;
+    }
 
 </style>
 

@@ -59,6 +59,7 @@ if(isset($_SESSION['logado'])){
         margin-top: 80px;
         margin-bottom: 80PX;
     }
+    
     .form-control{
         width: 100% !important;
     }
