@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,16 +30,27 @@ $dados = mysqli_fetch_assoc($query);
 
 <!------------------------------------------------>
 <div id="mensagemOperador" >
-  <div class="alert alert-primary" role="alert">
-    <?php echo "Seja bem-vindo(a), <strong>" . $dados['nome_operador']. "</strong>.";?>
+  <div class="alert alert-primary" role="alert" id="mensagemBemVindo">
+    <?php echo "Seja bem-vindo(a), <strong>" . $dados['nome_operador'] . "</strong>!";?>
   </div>
 </div>
 
 <style>
+    #mensagemBemVindo{
+      border-bottom-left-radius: 500px;
+      border-bottom-right-radius: 500px;
+      padding: 5px;
+      
+    }
+
     #mensagemOperador{
       text-align: center;
-      margin-top: 0px;
-      margin-bottom: -18px;
+      margin: 0 auto 0 auto;
+      margin-top: -16px;
+      margin-bottom: -0px;
+      width: 450px;
+      border-radius: 500px !important;
+
     }
 </style>
 

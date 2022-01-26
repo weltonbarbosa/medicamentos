@@ -22,7 +22,7 @@
 <!--Incluindo o cabeçalho do site-->
 <?php
     //Incluir o header da página
-
+    
     include_once('estrutura/header.php');
     include_once('estrutura/nav-operador.html');
     include_once('estrutura/mensagemNomeOperador.php');
