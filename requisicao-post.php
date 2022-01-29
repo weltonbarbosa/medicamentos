@@ -46,3 +46,7 @@ if($query){
     $_SESSION['requisicao-registrada'];
     header('Location: requisicao.php');
 }
+else{
+    $_SESSION['requisicao-nao-registrada'];
+    header('Location: requisicao.php');
+}

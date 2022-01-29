@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Requisição</title>
+        <title>Criar uma nova requisição</title>
         <meta charset="utf-8">
         <link href="estilos.css" rel="stylesheet" type="text/css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -11,25 +11,60 @@
 <!--Iniciar uma sessão-->
 <?php  
     session_start();
-?>
-
-<!--Incluir a verificação de sessão-->
-<?php
     include('verifica-sessao.php');
-?>
-
-<!--Incluir o header-->
-<?php
     include('estrutura/header.php');
+    include('estrutura/nav-operador.html');
+    include('estrutura/mensagemNomeOperador.php');
 ?>
 
-<!--Incluir o menu de navegação-->
-<?php
-    include('estrutura/nav-operador.html');
-?>
 
 <!--main padrão de todos os sites-->
 <main id="main-oficial">
+
+
+<!--Alert Requsição cadastrada com sucesso-->
+<?php
+    if(!empty($_SESSION['requisicao-registrada'])):
+?>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Requisição cadastrada!</strong> A requisição foi cadastrada com sucesso em nosso banco de dados.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<?php
+    endif;
+    unset($_SESSION['requisicao-registrada']);
+?>
+
+
+
+<!--Alert Requsição cadastrada com sucesso-->
+<?php
+    if(!empty($_SESSION['requisicao-nao-registrada'])):
+?>
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Algo deu errado!</strong> Não foi possivel registrar esta requisição. Tente novamente ou fale com o administrador.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<?php
+    endif;
+    unset($_SESSION['requisicao-nao-registrada']);
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--Formulário de cadastro de requisição de medicamento-->
 <form method="POST" action="requisicao-post.php" id="formulario-solicitacao-requisicao">
@@ -105,9 +140,9 @@
 
 
 </form>
-
-
 </main>
+
+
 
 
 
@@ -118,7 +153,6 @@
 <?php
     include('estrutura/footer.php');
 ?>
-
 
 
 <!--Estilos da página em questão-->
