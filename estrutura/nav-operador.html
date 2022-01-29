@@ -1,6 +1,9 @@
 <div id="nav-menu-operador"> 
     <ul>
         <li> <a href="painel.php"><img src="estrutura/imagens/home.png" id="icones-nav"> Início</a></li>|
+            <ul class="sub-nav">
+                <li><a href="#">Modelo 1</a></li>
+            </ul>
         <li><a href="requisicao.php"><img src="estrutura/imagens/rec.png" id="icones-nav">  Nova Requisição</a></li>|
         <li><a href="novo-operador.php"> <img src="estrutura/imagens/portrait.png" id="icones-nav">  Operador</a></li>|
         <li><a href="sair.php"><img src="estrutura/imagens/sign-out-alt.png" id="icones-nav"> Sair</a></li>
@@ -38,6 +41,7 @@
         text-decoration: none;
         font-size: 18px;
         color: white;
+    
     }
 
         ul li a:hover{
@@ -45,6 +49,15 @@
             color: #95d5b2;
         }
 
+    /*Sub menu*/
+    .sub-nav{
+        display: none;
+        position: absolute;
+    }
+
+        .sub-nav:hover{
+            display: block;
+        }
     
 #icones-nav{
     max-width: 25px;
