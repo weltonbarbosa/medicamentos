@@ -86,6 +86,7 @@ endwhile;
 
 <!-------------------------------------------->
 <table class="table table-success table-striped" id="tabela-principal">
+    <h4>Requisições</h4>
   <thead class="table-dark">
     <tr>
       <th scope="col">Cód</th>
@@ -131,7 +132,7 @@ endwhile;
                 <td>
                     <a href="modificar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>" ><input type="submit" value="Editar" name="editar-req" class="btn btn-warning"></a>  
                     <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Deletar"  name="deletar-req" class="btn btn-danger"></a>
-                    <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Deletar"  name="deletar-req" class="btn btn-danger"></a>  
+                    <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Imprimir"  name="deletar-req" class="btn btn-primary"></a>  
                     <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Entregar" name="entregar-med" class="btn btn-success"></td></a>
                 
                 </td>
@@ -143,12 +144,18 @@ endwhile;
     endif;
 ?>
 	</tr>
-
     
-
 </table>
 
 </main>
+
+<!---->
+<main>
+
+
+
+
+
 
 
 
