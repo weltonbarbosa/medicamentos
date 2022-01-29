@@ -57,15 +57,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <!--Formulário de cadastro de requisição de medicamento-->
 <form method="POST" action="requisicao-post.php" id="formulario-solicitacao-requisicao">
     <h2>Solicitação de Medicamento</h2>
