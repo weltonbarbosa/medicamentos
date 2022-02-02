@@ -46,10 +46,23 @@
             endif;
             ?>
          </div>
+        
 
+         <!--Script mascara do cpf-->
+         <script>
+            function mascara_cpf(){
+                var cpf = document.getElementById('cpf');
+                if(cpf.value.length == 3 || cpf.value.length == 7){
+                    cpf.value += "." 
+                } 
+                else if(cpf.value.length == 11){
+                    cpf.value += "-"
+                }
+            }
+        </script>
 
         <!--Inputs credenciais de login-->
-        <input type="text" placeholder="Insira seu CPF" name="cpfOperador">
+        <input type="text" placeholder="Insira seu CPF" name="cpfOperador" maxlength="14" id="cpf" onkeyup="mascara_cpf()">
         <input type="password" placeholder="Insira sua Senha" name="senhaOperador">
         <input type="submit" value="Entrar no Sistema" id="botao-login">
 

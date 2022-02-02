@@ -80,11 +80,24 @@
         endif;
     ?>
 
+    <!--Máscara para o CPF-->
+    <script>
+        function mascara_cpf(){
+            var cpf = document.getElementById('cpf');
+            if(cpf.value.length == 3 || cpf.value.length == 7){
+                cpf.value += "." 
+            } 
+            else if(cpf.value.length == 11){
+                cpf.value += "-"
+            }
+        }
+    </script>
+
     <label>Nome completo:</label><br>
     <input type="text" name="nomeDoNovoOperador" id="label1"  required><br><br>
 
     <label>CPF do operador:</label><br>
-    <input type="text" name="cpfDoNovoOperador" required><br><br>
+    <input type="text" name="cpfDoNovoOperador" maxlength="14" onkeyup="mascara_cpf()" id="cpf" required><br><br>
 
     <label>E-mail do operador:</label><br>
     <input type="email" name="emailDoNovoOperador" id="label1" required><br><br>

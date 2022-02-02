@@ -54,6 +54,45 @@
     //unset($_SESSION['requisicao-nao-registrada']);
 ?>
 
+<!--Script para mascara CPF-->
+<script>
+        function mascara_cpf(){
+            var cpf = document.getElementById('cpf1');
+            if(cpf.value.length == 3 || cpf.value.length == 7){
+                cpf.value += "." 
+            } 
+            else if(cpf.value.length == 11){
+                cpf.value += "-"
+            }
+        }
+    </script>
+
+
+<script>
+        function mascara_cpf2(){
+            var cpf = document.getElementById('cpf2');
+            if(cpf.value.length == 3 || cpf.value.length == 7){
+                cpf.value += "." 
+            } 
+            else if(cpf.value.length == 11){
+                cpf.value += "-"
+            }
+        }
+    </script>
+
+
+<!--Script para mascara CNS-->
+
+<script>
+    function mascara_cns(){
+        var cns = document.getElementById('cns1');
+        if(cns.value.lenght == 3 || cns.value.lenght == 8 || cns.value.lenght == 12){
+            cns.value += ".";
+        }
+
+    }
+</script>
+
 
 
 
@@ -70,10 +109,10 @@
     <input type="text" name="maeDoPaciente"  class="form-control" required><br>
 
     <label>CPF do paciente:</label><br>
-    <input type="text" name="cpfDoPaciente" required><br><br>
+    <input type="text" name="cpfDoPaciente" maxlength="14" onkeyup="mascara_cpf()" id="cpf1" required><br><br>
 
     <label>Cartão do SUS do paciente:</label><br>
-    <input type="text" name="cnsDoPaciente" required><br><br>
+    <input type="text" name="cnsDoPaciente" maxlength="18" onkeyup="mascara_cns()" id="cns1" required><br><br>
 
     <label>Data de nascimento do paciente:</label><br>
     <input type="date" name="nascimentoDoPaciente" required><br><br>
@@ -89,7 +128,7 @@
     <input type="text" name="nomeDoResponsavel" required><br><br>
 
     <label>CPF do responsável:</label><br>
-    <input type="text" name="cpfDoResponsavel" required><br><br>
+    <input type="text" name="cpfDoResponsavel" maxlength="14" onkeyup="mascara_cpf2()" id="cpf2" required><br><br>
 
     <label>CNS do responsável:</label><br>
     <input type="text" name="cnsDoResponsavel" required><br><br>
