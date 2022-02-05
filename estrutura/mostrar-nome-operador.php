@@ -21,7 +21,7 @@ $conexao = mysqli_connect($servidor, $adminServidor, $senhaServidor, $bancoDeDad
 $operadorLogado = $_SESSION['logado'];
 
 //Comando SQL
-$sql = "SELECT * FROM `operador_medicamentos` WHERE `cpf_operador` = $operadorLogado";
+$sql = "SELECT * FROM `operador_medicamentos` WHERE `cpf_operador` = '$operadorLogado'";
 
 //Requisição
 $query = mysqli_query($conexao, $sql);
