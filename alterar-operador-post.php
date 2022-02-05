@@ -18,7 +18,7 @@ $conexao = mysqli_connect($servidor, $adminServidor, $senhaServidor, $bancoDeDad
 $nomeDoNovoOperador = mysqli_real_escape_string($conexao, strtoupper($_POST['nomeDoNovoOperador']));
 $cpfDoNovoOperador = mysqli_real_escape_string($conexao, $_POST['cpfDoNovoOperador']);
 $emailDoNovoOperador = mysqli_real_escape_string($conexao, $_POST['emailDoNovoOperador']);
-$senhaDoNovoOperador = mysqli_real_escape_string($conexao, md5($_post['senhaDoNovoOperador']));
+$senhaDoNovoOperador = mysqli_real_escape_string($conexao, md5($_POST['senhaDoNovoOperador']));
 
 // Comando SQL
 $sql = "UPDATE `operador_medicamentos` SET `nome_operador`= '$nomeDoNovoOperador',`email_operador`= '$emailDoNovoOperador',`senha_operador`= '$senhaDoNovoOperador' WHERE `cpf_operador`= '$cpfDoNovoOperador'";

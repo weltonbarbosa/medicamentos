@@ -17,8 +17,6 @@
 ?>
 
 
-
-
 <!--Incluindo o cabeçalho do site-->
 <?php
     //Incluir o header da página

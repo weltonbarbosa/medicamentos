@@ -18,6 +18,7 @@ $senhaOperador = mysqli_real_escape_string($conexao, md5($_POST['senhaOperador']
 //Comando SQL que Selecionará 
 $sql = "SELECT * FROM `operador_medicamentos` WHERE `email_operador` = '$emailOperador' AND `senha_operador`= '$senhaOperador'";
 
+
 //Requisição do nosso comando SQL
 $query = mysqli_query($conexao, $sql);
 

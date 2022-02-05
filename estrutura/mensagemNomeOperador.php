@@ -11,7 +11,7 @@
     
 <?php
 
-$codigoUsuarioLogado =  $_SESSION['logado'];
+$emailUsuarioLogado =  $_SESSION['logado'];
 
 $servidor = "localhost";
 $admin = "root";
@@ -20,7 +20,7 @@ $banco = "sms";
 
 $conexao = mysqli_connect($servidor, $admin, $senha, $banco);
 
-$sql = "SELECT * FROM `operador_medicamentos` WHERE `cpf_operador`= $codigoUsuarioLogado";
+$sql = "SELECT * FROM `operador_medicamentos` WHERE `email_operador`= $emailUsuarioLogado";
 
 $query = mysqli_query($conexao, $sql);
 
