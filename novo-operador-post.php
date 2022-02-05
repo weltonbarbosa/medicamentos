@@ -18,13 +18,14 @@ $conexao = mysqli_connect($servidor, $adminServidor, $senhaServidor, $bancoDeDad
 //Variaveis
 $nomeDoOperador = mysqli_real_escape_string($conexao, strtoupper($_POST['nomeDoNovoOperador']));
 $cpfDoOperador = mysqli_real_escape_string($conexao, $_POST['cpfDoNovoOperador']);
+$nascDoOperador = mysqli_real_escape_string($conexao, $_POST['nascDoNovoOperador']);
 $emailDoOperador = mysqli_real_escape_string($conexao, $_POST['emailDoNovoOperador']);
 $senhaDoOperador = mysqli_real_escape_string($conexao, md5($_POST['senhaDoNovoOperador']));
 $cpfDoCadastrador = $_SESSION['logado'];
 
 
 //SQL
-$sql = "INSERT INTO `operador_medicamentos`(`cpf_operador`, `nome_operador`, `email_operador`, `senha_operador`, `cpf_do_cadastrador`) VALUES ('$cpfDoOperador', '$nomeDoOperador', '$emailDoOperador', '$senhaDoOperador', '$cpfDoCadastrador')";
+$sql = "INSERT INTO `operador_medicamentos`(`cpf_operador`, `nome_operador`, `email_operador`, `senha_operador`, `cpf_do_cadastrador`, `data_nasc_operador`) VALUES ('$cpfDoOperador', '$nomeDoOperador', '$emailDoOperador', '$senhaDoOperador', '$cpfDoCadastrador', '$nascDoOperador')";
 
 //query
 $query = mysqli_query($conexao, $sql);

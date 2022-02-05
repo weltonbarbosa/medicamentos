@@ -99,6 +99,9 @@
     <label>CPF do operador:</label><br>
     <input type="text" name="cpfDoNovoOperador" maxlength="14" onkeyup="mascara_cpf()" id="cpf" required><br><br>
 
+    <label>Data de nascimento:</label><br>
+    <input type="date" name="nascDoNovoOperador" required><br><br>
+
     <label>E-mail do operador:</label><br>
     <input type="email" name="emailDoNovoOperador" id="label1" required><br><br>
 
