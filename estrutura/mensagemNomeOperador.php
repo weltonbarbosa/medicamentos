@@ -20,7 +20,7 @@ $banco = "sms";
 
 $conexao = mysqli_connect($servidor, $admin, $senha, $banco);
 
-$sql = "SELECT * FROM `operador_medicamentos` WHERE `email_operador`= $emailUsuarioLogado";
+$sql = "SELECT * FROM `operador_medicamentos` WHERE `email_operador`= '$emailUsuarioLogado'";
 
 $query = mysqli_query($conexao, $sql);
 
@@ -37,9 +37,9 @@ $dados = mysqli_fetch_assoc($query);
 
 <style>
     #mensagemBemVindo{
-      border-bottom-left-radius: 500px;
-      border-bottom-right-radius: 500px;
-      padding: 5px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      padding: 8px;
       
     }
 
@@ -48,7 +48,7 @@ $dados = mysqli_fetch_assoc($query);
       margin: 0 auto 0 auto;
       margin-top: -16px;
       margin-bottom: -0px;
-      width: 450px;
+      width: auto;
       border-radius: 500px !important;
 
     }
