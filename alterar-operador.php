@@ -83,16 +83,16 @@
     <h3>Edite as informações do operador</h3><br>
 
     <label>Nome completo:</label><br>
-    <input type="text" name="nomeDoNovoOperador" id="label1" value="<?php echo $dados['nome_operador'];?>"><br><br>
+    <input type="text" name="nomeDoNovoOperador" id="label1" value="<?php echo $dados['nome_operador'];?>" required><br><br>
 
     <label>CPF do operador (campo inalterável):</label><br>
     <input type="text" name="cpfDoNovoOperador" value="<?php echo $dados['cpf_operador'];?>" readonly><br><br>
 
     <label>E-mail do operador:</label><br>
-    <input type="email" name="emailDoNovoOperador" id="label1" value="<?php echo $dados['email_operador'];?>"><br><br>
+    <input type="email" name="emailDoNovoOperador" id="label1" value="<?php echo $dados['email_operador'];?>" required><br><br>
 
     <label>Crie uma nova senha:</label><br>
-    <input type="password" name="senhaDoNovoOperador"><br><br>
+    <input type="password" name="senhaDoNovoOperador" required><br><br>
 
     <!--Botões Registrar e Reset-->
     <input type="submit" value="Confirmar Alteração" id="cadastrar-novo-operador">
