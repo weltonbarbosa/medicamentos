@@ -96,6 +96,9 @@
     <label>Nome completo:</label><br>
     <input type="text" name="nomeDoNovoOperador" id="label1"  required><br><br>
 
+    <label>Nome da mãe:</label><br>
+    <input type="text" name="nomeDaMaeOperador" id="label1" required><br><br>
+
     <label>CPF do operador:</label><br>
     <input type="text" name="cpfDoNovoOperador" maxlength="14" onkeyup="mascara_cpf()" id="cpf" required><br><br>
 
