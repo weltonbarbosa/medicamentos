@@ -24,7 +24,7 @@
 
 <!--Alert Requsição cadastrada com sucesso-->
 <?php
-    if(!empty($_SESSION['requisicao-registrada'])):
+    if(isset($_SESSION['requisicao-registrada'])):
 ?>
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -41,7 +41,7 @@
 
 <!--Alert Requsição cadastrada com sucesso-->
 <?php
-    if(!empty($_SESSION['requisicao-nao-registrada'])):
+    if(isset($_SESSION['requisicao-nao-registrada'])):
 ?>
 
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -102,6 +102,8 @@
 
     <!--Informações do paciente-->
     <h3>Informações do Paciente</h3>
+    <h6><b>Todos os campos são obrigatórios.</b></h6>
+    <br>
     <label>Nome completo do paciente:</label><br>
     <input type="text" name="nomeDoPaciente"   class="form-control" required><br>
 
@@ -109,36 +111,37 @@
     <input type="text" name="maeDoPaciente"  class="form-control" required><br>
 
     <label>CPF do paciente:</label><br>
-    <input type="text" name="cpfDoPaciente" maxlength="14" onkeyup="mascara_cpf()" id="cpf1" required><br><br>
+    <input type="text" name="cpfDoPaciente" class="form-control" maxlength="14" onkeyup="mascara_cpf()" id="cpf1" required><br>
 
     <label>Cartão do SUS do paciente:</label><br>
-    <input type="text" name="cnsDoPaciente" maxlength="18" onkeyup="mascara_cns()" id="cns1" required><br><br>
+    <input type="text" name="cnsDoPaciente" maxlength="18" onkeyup="mascara_cns()" id="cns1" class="form-control"  required><br>
 
     <label>Data de nascimento do paciente:</label><br>
-    <input type="date" name="nascimentoDoPaciente" required><br><br>
+    <input type="date" name="nascimentoDoPaciente" class="form-control" id="data-nasc" required><br>
 
+    <br>
     <hr>
+    <br>
 
 
      <!--Informações do Responsável/Solicitante-->
      <h3>Informações do Solicitante/Responspável</h3>
-     <h5>Os campos não são obrigatórios.</h5>
-
+     <h6><b>Todos os campos são obrigatórios.</b></h6>
+    <br>
     <label>Nome completo do responsável:</label><br>
-    <input type="text" name="nomeDoResponsavel" required><br><br>
+    <input type="text" name="nomeDoResponsavel" class="form-control"  required><br>
 
     <label>CPF do responsável:</label><br>
-    <input type="text" name="cpfDoResponsavel" maxlength="14" onkeyup="mascara_cpf2()" id="cpf2" required><br><br>
+    <input type="text" name="cpfDoResponsavel" class="form-control"  maxlength="14" onkeyup="mascara_cpf2()" id="cpf2" required><br>
 
     <label>CNS do responsável:</label><br>
-    <input type="text" name="cnsDoResponsavel" required><br><br>
+    <input type="text" name="cnsDoResponsavel" class="form-control" id="cns2" required><br>
 
-    <label>CPF do responsável:</label><br>
-    <input type="date" name="nascimentoDoResponsavel" required><br><br>
+    <label>Data de nascimento do responsável:</label><br>
+    <input type="date" name="nascimentoDoResponsavel" class="form-control" id="data-nasc"  required><br>
 
     <label>Telefone do Responsável:</label><br>
-    <input type="text" name="telefoneDoResponsavel" required><br>
-
+    <input type="text" name="telefoneDoResponsavel" class="form-control" id="data-nasc"  required><br>
 
     
     <br>
@@ -148,16 +151,18 @@
     <!--Informações do Medicamento-->
     <h3>Medicamento</h3>
      <h5>Os campos não são obrigatórios.</h5>
+     <br>
 
     <label>Nome do medicamento:</label><br>
-    <input type="text" name="nomeDoMedicamento"><br><br>
+    <input type="text" name="nomeDoMedicamento" class="form-control" ><br>
 
     <label>Quantidade (caixa):</label><br>
-    <input type="int" name="quantidadeMedicamento"><br><br>
+    <input type="int" name="quantidadeMedicamento" class="form-control" id="quant"><br>
 
 
     <!--Observação-->
-    <textarea id="observacao-solicitacao" name="observacao"></textarea><br><br>
+    <label>Observação:</label><br>
+    <textarea id="observacao-solicitacao" name="observacao" class="form-control"></textarea><br><br>
 
 
     <!--Botões Registrar e Reset-->
@@ -188,13 +193,24 @@
 <!--Estilos da página em questão-->
 <style>
 
+   #cpf1, #data-nasc, #cpf2, #cns1, #cns2, #quant{
+       width: 350px;
+   }
+
+   .form-control{
+        height: 43px;
+        font-size: 18px;
+        width: 100%;
+    }
     body{
         background-color: #d8f3dc;
     }
 
     #formulario-solicitacao-requisicao{
-        padding: 18px;
-        background-image: linear-gradient(to left, white, #d8f3dc 80%, white)
+        padding: 22px;
+        border-radius: 20px;
+        background-color: white;
+        /*background-image: linear-gradient(to left, white, #d8f3dc 80%, white)*/
     }
 
     input{
@@ -203,6 +219,7 @@
         padding-left: 5px;
         height: 32px;
         border-radius: 3px;
+        
 
     }
 
@@ -215,6 +232,18 @@
     }
     
 
+
+
+    #registrar-requisicao, #botao-reset{
+        width: 300px;
+        height: 45px;
+        margin: 0 auto 0 auto;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+
+
     #registrar-requisicao{
         background-color: green;
         text-align: center;
@@ -223,6 +252,7 @@
         color: white;
         border: 0px solid;
     }
+
 
         #registrar-requisicao:hover{
             background-color: ForestGreen;
@@ -249,7 +279,7 @@
     #botao-reset{
         background-color: DarkRed;
         color: white;
-        padding-left: 8px;
+        padding-left: 10px;
         padding-right: 8px;
         border: 0px solid;
     }

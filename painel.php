@@ -27,7 +27,7 @@
    
 <!-------------------------------------------->
 <table class="table table-success table-striped" id="tabela-principal">
-    <h4>Requisições</h4>
+    <h4>Todas as Requisições</h4>
   <thead class="table-dark">
     <tr>
       <th scope="col">Cód.</th>
