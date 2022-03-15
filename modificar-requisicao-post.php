@@ -31,13 +31,11 @@ $quantidadeMedicamento = $_POST['quantidadeMedicamento'];
 //Variável da observação
 $observacao = $_POST['observacao'];
 
-
 //Conexão com o banco de dados
 $servidor = "localhost";
 $adminServidor = "root";
 $senhaServidor = "";
 $bancoDeDados = "sms";
-
 
 $conexao = mysqli_connect($servidor, $adminServidor, $senhaServidor, $bancoDeDados);
 
@@ -50,7 +48,7 @@ $query = mysqli_query($conexao, $sql);
 //Redirecionamento bifucardo
 if($query){
     $_SESSION['modifif-req-ok'];
-    header('Location: https://www.google.com.br');
+    header('Location: modificar-requisicao-post');
 }
 else{
     $_SESSION['falha-modif-req'];

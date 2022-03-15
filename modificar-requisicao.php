@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Modificar Requisição</title>
+        <title>Alterar requisição</title>
         <meta charset="utf-8">
         <link href="estilos.css" rel="stylesheet" type="text/css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -11,26 +11,87 @@
 <!--Iniciar uma sessão-->
 <?php  
     session_start();
-?>
-
-<!--Incluir a verificação de sessão-->
-<?php
     include('verifica-sessao.php');
-?>
-
-<!--Incluir o header-->
-<?php
     include('estrutura/header.php');
+    include('estrutura/nav-operador.html');
+    include('estrutura/mensagemNomeOperador.php');
 ?>
 
-<!--Incluir o menu de navegação-->
-<?php
-    include('estrutura/nav-operador.html');
-?>
 
 <!--main padrão de todos os sites-->
 <main id="main-oficial">
 
+
+<!--Alert Requsição cadastrada com sucesso-->
+<?php
+    if(isset($_SESSION['requisicao-registrada'])):
+?>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Requisição cadastrada!</strong> A requisição foi cadastrada com sucesso em nosso banco de dados.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<?php
+    endif;
+    //unset($_SESSION['requisicao-registrada']);
+?>
+
+
+
+<!--Alert Requsição cadastrada com sucesso-->
+<?php
+    if(isset($_SESSION['requisicao-nao-registrada'])):
+?>
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Algo deu errado!</strong> Não foi possivel registrar esta requisição. Tente novamente ou fale com o administrador.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<?php
+    endif;
+    //unset($_SESSION['requisicao-nao-registrada']);
+?>
+
+<!--Script para mascara CPF-->
+<script>
+        function mascara_cpf(){
+            var cpf = document.getElementById('cpf1');
+            if(cpf.value.length == 3 || cpf.value.length == 7){
+                cpf.value += "." 
+            } 
+            else if(cpf.value.length == 11){
+                cpf.value += "-"
+            }
+        }
+    </script>
+
+
+<script>
+        function mascara_cpf2(){
+            var cpf = document.getElementById('cpf2');
+            if(cpf.value.length == 3 || cpf.value.length == 7){
+                cpf.value += "." 
+            } 
+            else if(cpf.value.length == 11){
+                cpf.value += "-"
+            }
+        }
+    </script>
+
+
+<!--Script para mascara CNS-->
+
+<script>
+    function mascara_cns(){
+        var cns = document.getElementById('cns1');
+        if(cns.value.lenght == 3 || cns.value.lenght == 8 || cns.value.lenght == 12){
+            cns.value += ".";
+        }
+
+    }
+</script>
 
 <!--Incuir a requisição de alteração-->
 <?php
@@ -52,51 +113,55 @@ while($dados = mysqli_fetch_assoc($querydb)):
 
 <!--Formulário de cadastro de requisição de medicamento-->
 <form method="POST" action="modificar-requisicao-post.php" id="formulario-solicitacao-requisicao">
-    <h2>Solicitação de Medicamento</h2>
+    <h4>Editar requerimento do(a) paciente: <strong><?php echo strtoupper($dados['nome_paciente']);?><strog>.</h4>
+    <label>Código da Requisição:</label><br>
+    <input value="<?php echo $dados['codigo_requisicao']?>" type="text" name="nomeDoPaciente" class="form-control" id="codRequisicao" required readonly><br>
 
     <!--Informações do paciente-->
     <h3>Informações do Paciente</h3>
-
-    <label>Código da Requisição:</label><br>
-    <input type="text" name="codigoDaRequisicao" id="label1" value= "<?php echo $dados['codigo_requisicao'];?>" readonly><br><br>
-
+    <h6><b>Todos os campos são obrigatórios.</b></h6>
+    <br>
+    
     <label>Nome completo do paciente:</label><br>
-    <input type="text" name="nomeDoPaciente" id="label1" value= "<?php echo $dados['nome_paciente'];?>" ><br><br>
+    <input value="<?php echo $dados['nome_paciente']?>" type="text" name="nomeDoPaciente" class="form-control" required><br>
 
     <label>Nome completo da mãe do paciente:</label><br>
-    <input type="text" name="maeDoPaciente" id="label1" value= "<?php echo $dados['mae_paciente'];?>"><br><br>
+    <input value="<?php echo $dados['mae_paciente']?>" type="text" name="maeDoPaciente"  class="form-control" required><br>
 
     <label>CPF do paciente:</label><br>
-    <input type="text" name="cpfDoPaciente" value= "<?php echo $dados['cpf_paciente'];?>"><br><br>
+    <input value="<?php echo $dados['cpf_paciente']?>" type="text" name="cpfDoPaciente" class="form-control" maxlength="14" onkeyup="mascara_cpf()" id="cpf1" required><br>
 
     <label>Cartão do SUS do paciente:</label><br>
-    <input type="text" name="cnsDoPaciente" value= "<?php echo $dados['cns_paciente'];?>"><br><br>
+    <input value="<?php echo $dados['cns_paciente']?>" type="text" name="cnsDoPaciente" maxlength="18" onkeyup="mascara_cns()" id="cns1" class="form-control"  required><br>
 
     <label>Data de nascimento do paciente:</label><br>
-    <input type="date" name="nascimentoDoPaciente" value= "<?php echo $dados['nascimento_paciente'];?>"><br><br>
+    <input value="<?php echo $dados['nascimento_paciente']?>" type="date" name="nascimentoDoPaciente" class="form-control" id="data-nasc" required><br>
 
+    <br>
     <hr>
+    <br>
 
 
      <!--Informações do Responsável/Solicitante-->
      <h3>Informações do Solicitante/Responspável</h3>
-     <h5>Os campos não são obrigatórios.</h5>
-
+     <h6><b>Todos os campos são obrigatórios.</b></h6>
+    <br>
     <label>Nome completo do responsável:</label><br>
-    <input type="text" name="nomeDoResponsavel" value="<?php echo $dados['nome_responsavel'];?>"><br><br>
+    <input value="<?php echo $dados['nome_responsavel']?>" type="text" name="nomeDoResponsavel" class="form-control"  required><br>
 
     <label>CPF do responsável:</label><br>
-    <input type="text" name="cpfDoResponsavel" value="<?php echo $dados['cpf_responsavel'];?>"><br><br>
+    <input value="<?php echo $dados['cpf_responsavel']?>" type="text" name="cpfDoResponsavel" class="form-control"  maxlength="14" onkeyup="mascara_cpf2()" id="cpf2" required><br>
 
     <label>CNS do responsável:</label><br>
-    <input type="text" name="cnsDoResponsavel" value="<?php echo $dados['cns_responsavel'];?>"><br><br>
+    <input value="<?php echo $dados['cns_responsavel']?>" type="text" name="cnsDoResponsavel" class="form-control" id="cns2" required><br>
 
     <label>Data de nascimento do responsável:</label><br>
-    <input type="date" name="nascimentoDoResponsavel" value="<?php echo $dados['nascimento_responsavel'];?>"><br><br>
+    <input value="<?php echo $dados['nascimento_responsavel']?>" type="date" name="nascimentoDoResponsavel" class="form-control" id="data-nasc"  required><br>
 
     <label>Telefone do Responsável:</label><br>
-    <input type="text" name="telefoneDoResponsavel" value="<?php echo $dados['telefone_responsavel'];?>"><br>
+    <input value="<?php echo $dados['telefone_responsavel']?>" type="text" name="telefoneDoResponsavel" class="form-control" id="data-nasc"  required><br>
 
+    
     <br>
     <hr>
     <br>
@@ -104,34 +169,35 @@ while($dados = mysqli_fetch_assoc($querydb)):
     <!--Informações do Medicamento-->
     <h3>Medicamento</h3>
      <h5>Os campos não são obrigatórios.</h5>
+     <br>
 
     <label>Nome do medicamento:</label><br>
-    <input type="text" name="nomeDoMedicamento"><br><br>
+    <input value="<?php echo $dados['nome_medicamento']?>" type="text" name="nomeDoMedicamento" class="form-control" ><br>
 
     <label>Quantidade (caixa):</label><br>
-    <input type="int" name="quantidadeMedicamento"><br><br>
+    <input value="<?php echo $dados['quant_medicamento']?>" type="int" name="quantidadeMedicamento" class="form-control" id="quant"><br>
 
 
     <!--Observação-->
-    <textarea id="observacao-solicitacao" name="observacao"></textarea><br><br>
+    <label>Observação:</label><br>
+    <textarea value="<?php echo $dados['observacao']?>" id="observacao-solicitacao" name="observacao" class="form-control"></textarea><br><br>
+    <hr>
+    <br>
+    <label>Data da última atualização:</label><br>
+    <input value="<?php echo date('d/m/Y h:i:s a', strtotime($dados['data_emissao_requisicao']))?>" type="text" name="nomeDoPaciente" class="form-control" id="dataEmissao" required readonly><br>
 
-<?php
-    endwhile;
-?>  
+    <?php
+        endwhile;
+    ?>  
 
     <!--Botões Registrar e Reset-->
-    <input type="submit" value="Confirmar Alteração" id="registrar-requisicao">
+    <input type="submit" value="Registrar Medicamento" id="registrar-requisicao">
     <input type="reset" value="Limpar todos os campos" id="botao-reset">
     
-
-
-
-
-
 </form>
-
-
 </main>
+
+
 
 
 
@@ -144,11 +210,36 @@ while($dados = mysqli_fetch_assoc($querydb)):
 ?>
 
 
-
 <!--Estilos da página em questão-->
 <style>
+    #dataEmissao{
+        width: 230px;
+        text-align: center;
+    }
+
+    #codRequisicao{
+        width: 80px;
+        text-align: center;
+    }
+
+   #cpf1, #data-nasc, #cpf2, #cns1, #cns2, #quant{
+       width: 350px;
+   }
+
+   .form-control{
+        height: 43px;
+        font-size: 18px;
+        width: 100%;
+    }
+    body{
+        background-color: #d8f3dc;
+    }
+
     #formulario-solicitacao-requisicao{
-        padding: 18px;
+        padding: 22px;
+        border-radius: 20px;
+        background-color: white;
+        /*background-image: linear-gradient(to left, white, #d8f3dc 80%, white)*/
     }
 
     input{
@@ -157,6 +248,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
         padding-left: 5px;
         height: 32px;
         border-radius: 3px;
+        
 
     }
 
@@ -169,6 +261,18 @@ while($dados = mysqli_fetch_assoc($querydb)):
     }
     
 
+
+
+    #registrar-requisicao, #botao-reset{
+        width: 300px;
+        height: 45px;
+        margin: 0 auto 0 auto;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+
+
     #registrar-requisicao{
         background-color: green;
         text-align: center;
@@ -177,6 +281,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
         color: white;
         border: 0px solid;
     }
+
 
         #registrar-requisicao:hover{
             background-color: ForestGreen;
@@ -203,7 +308,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
     #botao-reset{
         background-color: DarkRed;
         color: white;
-        padding-left: 8px;
+        padding-left: 10px;
         padding-right: 8px;
         border: 0px solid;
     }

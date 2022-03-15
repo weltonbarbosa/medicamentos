@@ -37,11 +37,18 @@
 
 
     <form id="formulario-deletar-req" metho="post" action="deletar-requisicao-post">
-        <p>Tem certeza que deseja excluir permanentemente a requisderererição do(a) paciente: 
-            <br>
-        <?php echo "$nomePacienteDeletar";?>?</p>
-    <a href="deletar-requisicao-post?codigo_requisicao=<?php echo $codigoReqDeletar;?>"><input type="button" value="Confirmar Exclusão"></a>
-    <input type="button" value="Não tenho certaza">
+        
+    <h3><strong>Atenção! </strong></h3><br>
+    <h3>A requisição será deletada permanentemente.</h3>
+        
+    <br>
+        <h4>Número da requisição: <strong><?php echo "$codigoReqDeletar";?></strong>.</h4>
+       <h4>Nome do paciente: <strong><?php echo strtoupper("$nomePacienteDeletar");?></strong>.</h4>
+       <br>
+       <h5>Deseja continuar?</h5>
+       <br>
+    <a href="deletar-requisicao-post?codigo_requisicao=<?php echo $codigoReqDeletar;?>"><input type="button" value="Confirmar" id="botao-confirmar" class="botao-op"></a>
+    <a href="painel.php"><input type="button" value="Cancelar" id="botao-cancelar" class="botao-op"></a>
     </form> 
 
 
@@ -58,9 +65,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <style>
+
+    #botao-confirmar{
+        background-color: green;
+    }
+
+    #botao-cancelar{
+        background-color: red;
+    }
+
+    #botao-confirmar:hover{
+        opacity: 0.9;
+    }
+    
+    #botao-cancelar:hover{
+        opacity: 0.9;
+    }
+    .botao-op{
+        width: 200px;
+        height: 40px;
+        border: none;
+        color: white;
+        border-radius: 3px;
+    }
+
     #formulario-deletar-req{
         margin: 0 auto 0 auto;
-        width: 630px;
+        width: 800px;
         height: auto;
         padding: 25px;
         text-align: center;
