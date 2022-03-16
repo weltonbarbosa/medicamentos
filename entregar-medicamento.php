@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Alterar requisição</title>
+        <title>Despachar Medicamento</title>
         <meta charset="utf-8">
         <link href="estilos.css" rel="stylesheet" type="text/css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -80,6 +80,18 @@
         }
     </script>
 
+<script>
+        function mascara_cpf3(){
+            var cpf = document.getElementById('cpf3');
+            if(cpf.value.length == 3 || cpf.value.length == 7){
+                cpf.value += "." 
+            } 
+            else if(cpf.value.length == 11){
+                cpf.value += "-"
+            }
+        }
+    </script>  
+
 
 <!--Script para mascara CNS-->
 
@@ -112,10 +124,10 @@ while($dados = mysqli_fetch_assoc($querydb)):
 ?>
 
 <!--Formulário de cadastro de requisição de medicamento-->
-<form method="POST" action="despachar-requisicao-post.php" id="formulario-solicitacao-requisicao">
-    <h4>Editar requerimento do(a) paciente: <strong><?php echo strtoupper($dados['nome_paciente']);?><strog>.</h4>
+<form method="POST" action="entregar-medicamento-post.php" id="formulario-solicitacao-requisicao">
+    <h4>Despachar/Entregar medicamento do(a) paciente: <strong><?php echo strtoupper($dados['nome_paciente']);?><strog>.</h4>
     <label>Código da Requisição:</label><br>
-    <input value="<?php echo $dados['codigo_requisicao']?>" type="text" name="nomeDoPaciente" class="form-control" id="codRequisicao" required readonly><br>
+    <input value="<?php echo $dados['codigo_requisicao']?>" type="text" name="codRequisicao" class="form-control" id="codRequisicao" required readonly><br>
 
     <!--Informações do paciente-->
     <h3>Informações do Paciente</h3>
@@ -172,15 +184,15 @@ while($dados = mysqli_fetch_assoc($querydb)):
      <br>
 
     <label>Nome do medicamento:</label><br>
-    <input value="<?php echo $dados['nome_medicamento']?>" type="text" name="nomeDoMedicamento" class="form-control"required readonly><br>
+    <input value="<?php echo $dados['nome_medicamento'];?>" type="text" name="nomeDoMedicamento" class="form-control"required readonly><br>
 
     <label>Quantidade (caixa):</label><br>
-    <input value="<?php echo $dados['quant_medicamento']?>" type="int" name="quantidadeMedicamento" class="form-control" id="quant" required readonly><br>
+    <input value="<?php echo $dados['quant_medicamento'];?>" type="int" name="quantidadeMedicamento" class="form-control" id="quant" required readonly><br>
 
 
     <!--Observação-->
     <label>Observação:</label><br>
-    <textarea value="<?php echo $dados['observacao']?>" id="observacao-solicitacao" name="observacao" class="form-control" required readonly></textarea><br>
+    <textarea value="<?php echo $dados['observacao'];?>" id="observacao-solicitacao" name="observacao" class="form-control"  readonly></textarea><br>
   
 
     <?php
@@ -195,22 +207,24 @@ while($dados = mysqli_fetch_assoc($querydb)):
     <h3>Despachar Medicamento</h3>
     <h5>Preencha corretamente com as informações do recebedor do medicamento</h5><br>
 
-    <label>Nome do recebedor:</label>
-    <input type="text" name="nomeRecebedor" class="form-control" required><br>
+    <label>Nome do Recebedor:</label><br>
+    <input type="text" name="nomeDoRecebedor" class="form-control"  required><br>
 
-    <label>Nome do recebedor:</label>
-    <input type="text" name="nomeRecebedor" class="form-control" required><br>
+    <label>CPF do Recebedor:</label><br>
+    <input type="text" name="cpfDoRecebedor" class="form-control"  maxlength="14" onkeyup="mascara_cpf3()" id="cpf3" required><br>
 
-    <label>Nome do recebedor:</label>
-    <input type="text" name="nomeRecebedor" class="form-control" required><br>
+    <label>Data de nascimento do recebedor:</label><br>
+    <input type="date" name="nascimentoDoRecebedor" class="form-control" id="data-nasc" required><br>
 
-    <label>Nome do recebedor:</label>
-    <input type="text" name="nomeRecebedor" class="form-control" required><br>
-
-    <label>Operador Despachador:</label>
-    <input type="text" name="nomeRecebedor" class="form-control" required><br>
-
-
+    <label>Telefone do Responsável:</label><br>
+    <input type="text" name="telefoneDoRecebedor" class="form-control" id="data-nasc"  required><br>
+ 
+     <!--Observação-->
+     <label>Observação:</label><br>
+    <textarea id="observacao-solicitacao" name="observacao" class="form-control" placeholder="Campo não obrigatório"></textarea><br>
+        
+    <label>Data do despacho:</label><br>
+    <input type="date" name="nascimentoDoDespacho" class="form-control" id="data-nasc" required><br>
 
     <!--Botões Registrar e Reset-->
     <input type="submit" value="Despachar Medicamento" id="despachar-requisicao" class="form-control">
@@ -218,18 +232,10 @@ while($dados = mysqli_fetch_assoc($querydb)):
 </form>
 </main>
 
-
-
-
-
-
-
-
 <!--Incluir o footer-->
 <?php
     include('estrutura/footer.php');
 ?>
-
 
 <!--Estilos da página em questão-->
 <style>
@@ -251,7 +257,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
         text-align: center;
     }
 
-   #cpf1, #data-nasc, #cpf2, #cns1, #cns2, #quant{
+   #cpf1, #cpf3, #data-nasc, #cpf2, #cns1, #cns2, #quant{
        width: 350px;
    }
 
