@@ -160,7 +160,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
 
     <label>Telefone do Responsável:</label><br>
     <input value="<?php echo $dados['telefone_responsavel']?>" type="text" name="telefoneDoResponsavel" class="form-control" id="data-nasc"  required readonly><br>
-
+ 
     
     <br>
     <hr>
