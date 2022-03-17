@@ -32,25 +32,25 @@ $nomeOperadorRegistrador = $fetchAssocOperador['nome_operador'];
 
 
 //Variaiveis do Paciente
-$nomeDoPaciente = $_POST['nomeDoPaciente'];
-$maeDoPaciente = $_POST['maeDoPaciente'];
+$nomeDoPaciente = strtoupper($_POST['nomeDoPaciente']);
+$maeDoPaciente = strtoupper($_POST['maeDoPaciente']);
 $cpfDoPaciente = $_POST['cpfDoPaciente'];
 $cnsDoPaciente = $_POST['cnsDoPaciente'];
 $nascimentoDoPaciente = $_POST['nascimentoDoPaciente'];
 
 //Variaveis do Solicitante/Responsável
-$nomeDoResponsavel = $_POST['nomeDoResponsavel'];
+$nomeDoResponsavel = strtoupper($_POST['nomeDoResponsavel']);
 $cpfDoResponsavel = $_POST['cpfDoResponsavel'];
 $cnsDoResponsavel = $_POST['cnsDoResponsavel'];
-$nascimentoDoResponsavel = $_POST['nascimentoDoResponsavel'];
+$nascimentoDoResponsavel = strtoupper($_POST['nascimentoDoResponsavel']);
 $telefoneDoResponsavel = $_POST['telefoneDoResponsavel'];
 
 //Variaveis do medicamento
-$nomeDoMedicamento = $_POST['nomeDoMedicamento'];
+$nomeDoMedicamento = strtoupper($_POST['nomeDoMedicamento']);
 $quantidadeMedicamento = $_POST['quantidadeMedicamento'];
 
 //Variável da observação
-$observacao = $_POST['observacao'];
+$observacao = strtoupper($_POST['observacao']);
 
 //Variável do CPF do Operador/Registrador
 $operadorRegistrador =  $_SESSION['logado'];
