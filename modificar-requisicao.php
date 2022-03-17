@@ -180,7 +180,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
 
     <!--Observação-->
     <label>Observação:</label><br>
-    <textarea value="<?php echo $dados['observacao']?>" id="observacao-solicitacao" name="observacao" class="form-control"></textarea><br><br>
+    <textarea  id="observacao-solicitacao" name="observacao" class="form-control" maxlength="180"><?php echo $dados['observacao'];?></textarea><br><br>
 
     <hr>
     <br>

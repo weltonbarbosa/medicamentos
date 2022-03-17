@@ -162,7 +162,7 @@
 
     <!--Observação-->
     <label>Observação:</label><br>
-    <textarea id="observacao-solicitacao" name="observacao" class="form-control"></textarea><br><br>
+    <textarea id="observacao-solicitacao" name="observacao" class="form-control" maxlength="180" placeholder="Limite: 180 caracteres..."></textarea><br><br>
 
 
     <!--Botões Registrar e Reset-->
