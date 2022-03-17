@@ -24,17 +24,17 @@
 
 <!--Alert Requsição cadastrada com sucesso-->
 <?php
-    if(isset($_SESSION['requisicao-registrada'])):
+    if(isset($_SESSION['requisicao_modificada'])):
 ?>
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Requisição cadastrada!</strong> A requisição foi cadastrada com sucesso em nosso banco de dados.
+  <strong>Requisição editada!</strong> A requisição foi editada com sucesso.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
 <?php
     endif;
-    //unset($_SESSION['requisicao-registrada']);
+    unset($_SESSION['requisicao_modificada']);
 ?>
 
 
@@ -45,7 +45,7 @@
 ?>
 
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Algo deu errado!</strong> Não foi possivel registrar esta requisição. Tente novamente ou fale com o administrador.
+  <strong>Algo deu errado!</strong> Não foi possivel editar esta requisição. Tente novamente ou fale com o administrador.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
@@ -115,7 +115,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
 <form method="POST" action="modificar-requisicao-post.php" id="formulario-solicitacao-requisicao">
     <h4>Editar requerimento do(a) paciente: <strong><?php echo strtoupper($dados['nome_paciente']);?><strog>.</h4>
     <label>Código da Requisição:</label><br>
-    <input value="<?php echo $dados['codigo_requisicao']?>" type="text" name="nomeDoPaciente" class="form-control" id="codRequisicao" required readonly><br>
+    <input value="<?php echo $dados['codigo_requisicao']?>" type="text" name="codigoDaRequisicao" class="form-control" id="codRequisicao" required readonly><br>
 
     <!--Informações do paciente-->
     <h3>Informações do Paciente</h3>
@@ -181,18 +181,21 @@ while($dados = mysqli_fetch_assoc($querydb)):
     <!--Observação-->
     <label>Observação:</label><br>
     <textarea value="<?php echo $dados['observacao']?>" id="observacao-solicitacao" name="observacao" class="form-control"></textarea><br><br>
+
     <hr>
     <br>
-    <label>Data da última atualização:</label><br>
-    <input value="<?php echo date('d/m/Y h:i:s a', strtotime($dados['data_emissao_requisicao']))?>" type="text" name="nomeDoPaciente" class="form-control" id="dataEmissao" required readonly><br>
+
+    <label>Data da requisicão:</label><br>
+    <input value="<?php echo date('d/m/Y h:i:s a', strtotime($dados['data_emissao_requisicao']))?>" type="text" name="dataEmissaoRequisicao" class="form-control" id="dataEmissao" required readonly><br>
+   
 
     <?php
         endwhile;
     ?>  
 
     <!--Botões Registrar e Reset-->
-    <input type="submit" value="Registrar Medicamento" id="registrar-requisicao">
-    <input type="reset" value="Limpar todos os campos" id="botao-reset">
+    <input type="submit" value="Editar Requisição" id="registrar-requisicao">
+
     
 </form>
 </main>

@@ -224,7 +224,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
     <textarea id="observacao-solicitacao" name="observacao" class="form-control" placeholder="Campo não obrigatório"></textarea><br>
         
     <label>Data do despacho:</label><br>
-    <input type="date" name="nascimentoDoDespacho" class="form-control" id="data-nasc" required><br>
+    <input type="date" name="dataDoDespacho" class="form-control" id="data-nasc" required><br>
 
     <!--Botões Registrar e Reset-->
     <input type="submit" value="Despachar Medicamento" id="despachar-requisicao" class="form-control">

@@ -11,21 +11,21 @@ include_once('verifica-sessao.php');
 
 //Variaiveis do Paciente
 $codigoRequisicao1 = $_POST['codigoDaRequisicao'];
-$nomeDoPaciente = $_POST['nomeDoPaciente'];
-$maeDoPaciente = $_POST['maeDoPaciente'];
+$nomeDoPaciente = strtoupper($_POST['nomeDoPaciente']);
+$maeDoPaciente = strtoupper($_POST['maeDoPaciente']);
 $cpfDoPaciente = $_POST['cpfDoPaciente'];
 $cnsDoPaciente = $_POST['cnsDoPaciente'];
 $nascimentoDoPaciente = $_POST['nascimentoDoPaciente'];
 
 //Variaveis do Solicitante/Responsável
-$nomeDoResponsavel = $_POST['nomeDoResponsavel'];
+$nomeDoResponsavel = strtoupper($_POST['nomeDoResponsavel']);
 $cpfDoResponsavel = $_POST['cpfDoResponsavel'];
 $cnsDoResponsavel = $_POST['cnsDoResponsavel'];
 $nascimentoDoResponsavel = $_POST['nascimentoDoResponsavel'];
 $telefoneDoResponsavel = $_POST['telefoneDoResponsavel'];
 
 //Variaveis do medicamento
-$nomeDoMedicamento = $_POST['nomeDoMedicamento'];
+$nomeDoMedicamento = strtoupper($_POST['nomeDoMedicamento']);
 $quantidadeMedicamento = $_POST['quantidadeMedicamento'];
 
 //Variável da observação
@@ -40,17 +40,18 @@ $bancoDeDados = "sms";
 $conexao = mysqli_connect($servidor, $adminServidor, $senhaServidor, $bancoDeDados);
 
 //Comando SQL
-$sql = "UPDATE `requisicao` SET `nome_paciente`='$nomeDoPaciente',`mae_paciente`='$maeDoPaciente',`cpf_paciente`='$cpfDoPaciente',`cns_paciente`='$cnsDoPaciente',`nascimento_paciente`='$nascimentoDoPaciente',`nome_responsavel`='$nomeDoResponsavel',`cpf_responsavel`='$cpfDoResponsavel',`cns_responsavel`='$cnsDoResponsavel',`nascimento_responsavel`=$nascimentoDoResponsavel,`telefone_responsavel`='$telefoneDoResponsavel',`nome_medicamento`='$nomeDoMedicamento',`quant_medicamento`='$quantidadeMedicamento',`observacao`='$observacao' WHERE `codigo_requisicao`='$codigoRequisicao1'";
+$sql = "UPDATE `requisicao` SET `nome_paciente` = '$nomeDoPaciente', `mae_paciente` = '$maeDoPaciente', `cpf_paciente` = '$cpfDoPaciente', `cns_paciente` = '$cnsDoPaciente', `nascimento_paciente` = '$nascimentoDoPaciente', `nome_responsavel` = '$nomeDoResponsavel', `cpf_responsavel` = '$cpfDoResponsavel', `cns_responsavel` = '$cnsDoResponsavel', `nascimento_responsavel` = '$nascimentoDoResponsavel', `telefone_responsavel` = '$telefoneDoResponsavel', `nome_medicamento` = '$nomeDoMedicamento', `quant_medicamento` = '$quantidadeMedicamento', `observacao` = '$observacao' WHERE `requisicao`.`codigo_requisicao` = '$codigoRequisicao1'";
 
 //Requisição
 $query = mysqli_query($conexao, $sql);
 
 //Redirecionamento bifucardo
 if($query){
-    $_SESSION['modifif-req-ok'];
-    header('Location: modificar-requisicao-post');
+    $_SESSION['requisicao_modificada'] = true;
+    header('Location: modificar-requisicao?codigo_requisicao=' . $codigoRequisicao1 .'');
 }
 else{
-    $_SESSION['falha-modif-req'];
-    header('Location: login.php');
+    $_SESSION['requisicao_nao_modificada'] = true;
+    header('Location: modificar-requisicao?codigo_requisicao=' . $codigoRequisicao1 .'');
+    echo "Erro!";
 }

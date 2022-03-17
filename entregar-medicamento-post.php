@@ -4,10 +4,10 @@
 $codRequisicao = $_POST['codRequisicao'];
 $nomeRecebedor = strtoupper($_POST['nomeDoRecebedor']);
 $cpfDoRecebedor = $_POST['cpfDoRecebedor'];
-$nascimentoDoRecebedor = date('d/m/Y', strtotime($_POST['nascimentoDoRecebedor']));
+$nascimentoDoRecebedor = $_POST['nascimentoDoRecebedor'];
 $telefoneDoRecebedor = $_POST['telefoneDoRecebedor'];
 $observacao = $_POST['observacao'];
-$nascimentoDoDespacho = date('d/m/Y', strtotime($_POST['nascimentoDoDespacho']));
+$dataDoDespacho = $_POST['dataDoDespacho'];
 
 //Estabelecendo Conexão com o banco de dados
 include_once('estrutura/conexao.php');
@@ -17,8 +17,7 @@ if($conexao){
 }
 
 //Comando SQL
-$sqlDespacho = "INSERT INTO `requisicao`(`nome_recebedor`) VALUES ('$nomeRecebedor') WHERE '`codigo_requisicao`' = '$nomeRecebedor'";
-
+$sqlDespacho = "UPDATE `requisicao` SET `nome_recebedor` = '$nomeRecebedor', `cpf_recebedor` = '$cpfDoRecebedor', `nascimento_recebedor` = '$nascimentoDoRecebedor', `telefone_recebedor` = '$telefoneDoRecebedor', `observacao_recebedor` = '$observacao', `data_despacho` = '$dataDoDespacho' WHERE `requisicao`.`codigo_requisicao` = 15";
 //Nossa requisição
 $queryDespacho = mysqli_query($conexao, $sqlDespacho);
 
@@ -35,7 +34,7 @@ echo "$cpfDoRecebedor<br>";
 echo "$nascimentoDoRecebedor<br>";
 echo "$telefoneDoRecebedor<br>";
 echo "$observacao<br>";
-echo "$nascimentoDoDespacho<br>";
+echo "$dataDoDespacho<br>";
 echo "$codRequisicao";
 
 
