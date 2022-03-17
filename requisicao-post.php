@@ -62,10 +62,10 @@ $sql = "INSERT INTO `requisicao`(`nome_paciente`, `mae_paciente`, `cpf_paciente`
 $query = mysqli_query($conexao, $sql);
 
 if($query){
-    $_SESSION['requisicao-registrada'];
+    $_SESSION['requisicao-registrada'] = true;
     header('Location: requisicao.php');
 }
 else{
-    $_SESSION['requisicao-nao-registrada'];
+    $_SESSION['requisicao-nao-registrada'] = true;
     header('Location: requisicao.php');
 }
