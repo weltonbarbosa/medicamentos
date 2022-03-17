@@ -5,27 +5,35 @@ session_start();
 //Incluir verificação de sessao
 include_once('verifica-sessao.php');
 
-
-
 //Variáveis  
 $nome = strtoupper($_POST['nome']);
 $nomeMae = strtoupper($_POST['nomeMae']);
+$cpfOperador = $_POST['cpfOperador'];
 $dataNasc = $_POST['dataNasc'];
 $email = $_POST['email'];
 $senha = md5($_POST['senha']);
-
 $usuarioLogadoAgora = $_SESSION['logado'];
 
 //Incluir nossa conexão com o banco de dados
 include_once('estrutura/conexao.php');
 
-$sqlBusc = "SELECT * FROM 'operador_medicamentos' WHERE 'cpf_operador' = '$usuarioLogadoAgora'";
+//Comando SQL
+$sqlBusc = "UPDATE `operador_medicamentos` SET `nome_operador` = '$nome', `nome_mae_operador` = '$nomeMae', `data_nasc_operador` = '$dataNasc', `email_operador` = '$email', `senha_operador` = '$senha' WHERE `operador_medicamentos`.`cpf_operador` = '$cpfOperador'";
 
+//Query
 $queryBusc = mysqli_query($conexao, $sqlBusc);
 
-$modeloDados = mysqli_fetch_assoc($queryBusc);
+//Condifionais
+if($queryBusc){
 
-echo $modeloDados['cpf_operador'];
+    $_SESSION['informacoes-alteradas'] = true;
+    header('Location: minhas-informacoes.php');
+}
+
+else{
+    $_SESSION['informacoes-nao-alteradas'] = true;
+    header('Location: minhas-informacoes.php');
+}
 
 /*
 //Nossa query

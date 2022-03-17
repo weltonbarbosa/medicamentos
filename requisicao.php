@@ -34,7 +34,7 @@
 
 <?php
     endif;
-    //unset($_SESSION['requisicao-registrada']);
+    unset($_SESSION['requisicao-registrada']);
 ?>
 
 
