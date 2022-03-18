@@ -35,8 +35,8 @@
       <th scope="col">CPF</th>
       <th scope="col">Data de Nasc.</th>
       <th scope="col">Medicamento</th>
-      <th scope="col">Data de Emissão</th>
-      <th scope="col">Ações</th>
+      <th scope="col">Quant.</th>
+      <th scope="col">Data Emissão</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
@@ -69,7 +69,7 @@
                 <td><?php echo date('d/m/Y', strtotime($dados['nascimento_paciente']));?></td>
                 <td><?php echo $dados['nome_medicamento'];?></td>
                 <td><?php echo $dados['quant_medicamento'];?></td>
-                <td><?php echo $dados['status_requisicao'];?></td>
+                <td><?php echo $dados['data_emissao_requisicao'];?></td>
                 <td>
                     <a href="modificar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>" ><input type="submit" value="Editar" name="editar-req" class="btn btn-warning"></a>  
                     <a href="deletar-requisicao?codigo_requisicao=<?php echo $dados['codigo_requisicao'];?>&nome_paciente=<?php echo $dados['nome_paciente'];?>"><input type="submit" value="Deletar"  name="deletar-req" class="btn btn-danger"></a>
@@ -106,6 +106,11 @@
 
 <!--estiolos da página-->
 <style>
+
+::selection{
+    color: white;
+    background-color: #176100;
+}
 
 #tabela-principal{
     text-align: center !important;

@@ -15,3 +15,8 @@ body{
     background-color: #d8f3dc;
     border-radius: 6px;
 }
+
+::selection{
+    color: rgb(16, 175, 2);
+    background-color: #176100;
+}

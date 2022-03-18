@@ -11,9 +11,10 @@
 <!--Iniciar uma sessão-->
 <?php  
     session_start();
-    include('verifica-sessao.php');
-    include('estrutura/header.php');
-    include('estrutura/nav-operador.html');
+    include_once('verifica-sessao.php');
+    include_once('estrutura/header.php');
+    include_once('estrutura/nav-operador.html');
+    include_once('estrutura/mensagemNomeOperador.php');
 ?>
 
 <!--main padrão de todos os sites-->
@@ -152,7 +153,6 @@
       <td><?php echo $dados['email_operador'];?></td>
       <td><?php echo date('d/m/Y', strtotime($dados['data_de_cadastro']));?></td>
       <td><?php echo $dados['cpf_do_cadastrador'];?></td>
-
     </tr>
 
     <!--Fim do While-->
@@ -161,26 +161,20 @@
     ?>
 
 </table>
-
-
-
-
 </main>
 
-
+<!--Incluir JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 
 <!--Incluir o footer-->
 <?php
     include('estrutura/footer.php');
 ?>
 
-
-
 <!--Estilos da página em questão-->
 <style>
 
+    
 
     #msg-novo-operador-cadastrado{
         margin: 0 auto 0 auto;
@@ -189,7 +183,6 @@
         padding-top: 3px;
         padding-bottom: 3px;
         text-align: center;
-
     }
 
 
@@ -197,7 +190,6 @@
         padding: 35px;
         padding-top: 30px;
         background-color: #d8f3dc;
-     
     }
 
     input{
@@ -206,7 +198,6 @@
         padding-left: 5px;
         height: 32px;
         border-radius: 3px;
-
     }
 
         input:hover{
@@ -234,7 +225,6 @@
             border: 0px solid;
         }
     
-
 
     #botao-reset{
         background-color: DarkRed;

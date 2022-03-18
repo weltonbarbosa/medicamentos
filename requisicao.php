@@ -159,6 +159,8 @@
     <label>Quantidade (caixa):</label><br>
     <input type="int" name="quantidadeMedicamento" class="form-control" id="quant"><br>
 
+    <label>Arquivo:</label><br>
+    <input type="file" class="form-control"><br>
 
     <!--Observação-->
     <label>Observação:</label><br>

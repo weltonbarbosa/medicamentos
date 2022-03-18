@@ -192,7 +192,7 @@ while($dados = mysqli_fetch_assoc($querydb)):
 
     <!--Observação-->
     <label>Observação:</label><br>
-    <textarea value="<?php echo $dados['observacao'];?>" id="observacao-solicitacao" name="observacao" class="form-control"  readonly></textarea><br>
+    <textarea  id="observacao-solicitacao" name="observacao" class="form-control"  readonly><?php echo $dados['observacao'];?></textarea><br>
   
 
     <?php
@@ -239,6 +239,11 @@ while($dados = mysqli_fetch_assoc($querydb)):
 
 <!--Estilos da página em questão-->
 <style>
+
+    #flexCheckDefault{
+        width: 35px;
+        height: 35px;
+    }
 
     #despachar-requisicao{
         background-color: DodgerBlue;
