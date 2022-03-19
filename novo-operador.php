@@ -21,7 +21,7 @@
 <main id="main-oficial">
 
 <!--Formulário de cadastro de requisição de medicamento-->
-<form method="POST" action="novo-operador-post.php" id="formulario-solicitacao-requisicao">
+<form method="POST" action="novo-operador-post.php" id="formulario-minhas-informacoes" class="form-control" >
     <h2>Cadastrar Operador</h2>
 
     <!--Informações do paciente-->
@@ -83,22 +83,23 @@
     </script>
 
     <label>Nome completo:</label><br>
-    <input type="text" name="nomeDoNovoOperador" id="label1"  required><br><br>
+    <input type="text" name="nomeDoNovoOperador" id="label1"  class="form-control" required><br>
 
-    <label>Nome da mãe:</label><br>
-    <input type="text" name="nomeDaMaeOperador" id="label1" required><br><br>
+    <label>Nome completo da mãe:</label><br>
+    <input type="text" name="nomeDaMaeOperador" id="label1" class="form-control" required><br>
+    
+    <label>E-mail do operador:</label><br>
+    <input type="email" name="emailDoNovoOperador" id="label1" class="form-control"  required><br>
 
     <label>CPF do operador:</label><br>
-    <input type="text" name="cpfDoNovoOperador" maxlength="14" onkeyup="mascara_cpf()" id="cpf" required><br><br>
+    <input type="text" name="cpfDoNovoOperador" maxlength="14" onkeyup="mascara_cpf()" id="cpf" class="form-control"  required><br>
 
     <label>Data de nascimento:</label><br>
-    <input type="date" name="nascDoNovoOperador" required><br><br>
+    <input type="date" name="nascDoNovoOperador" class="form-control" id="caixa2" required><br>
 
-    <label>E-mail do operador:</label><br>
-    <input type="email" name="emailDoNovoOperador" id="label1" required><br><br>
-
+    
     <label>Senha:</label><br>
-    <input type="password" name="senhaDoNovoOperador" required><br><br>
+    <input type="password" name="senhaDoNovoOperador" class="form-control" id="caixa2" required><br>
 
     <!--Botões Registrar e Reset-->
     <input type="submit" value="Cadastrar Novo Operador" id="cadastrar-novo-operador">
@@ -173,72 +174,36 @@
 
 <!--Estilos da página em questão-->
 <style>
-
-    
-
-    #msg-novo-operador-cadastrado{
-        margin: 0 auto 0 auto;
-        background-color: #00b4d8;
-        color: white;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        text-align: center;
-    }
-
-
-    #formulario-solicitacao-requisicao{
-        padding: 35px;
-        padding-top: 30px;
-        background-color: #d8f3dc;
-    }
-
-    input{
-        outline: none;
-        border: 1px solid grey;
-        padding-left: 5px;
-        height: 32px;
-        border-radius: 3px;
-    }
-
-        input:hover{
-            box-shadow: 0px 0px 3px #6c92db;
-        }
-
-    #label1{
-        width: 550px;
-    }
-    
-
-    #cadastrar-novo-operador{
-        background-color: green;
-        text-align: center;
-        padding-left: 8px;
-        padding-right: 8px;
-        color: white;
-        border: 0px solid;
-    }
-
-        #cadastrar-novo-operador:hover{
-            background-color: ForestGreen;
-            text-align: center;
+     #botao{
+            background-color: green;
             color: white;
-            border: 0px solid;
+            width: 240px;
         }
+
+        #cpf, #caixa2{
+            width: 240px;
+        }
+
+       body{
+            background-color: #d8f3dc;
+       }
+
+       #formulario-minhas-informacoes{
+           padding: 24px;
+       }
+
+
+       #textoNome{
+           width: 540px;
+       }
+       #main-oficial {
+            width: 900px;
+            height: auto;;
+            margin: 45px auto 0 auto;
+            background-color: #d8f3dc;
+            border-radius: none;
+       }
     
-
-    #botao-reset{
-        background-color: DarkRed;
-        color: white;
-        padding-left: 8px;
-        padding-right: 8px;
-        border: 0px solid;
-        margin-bottom: 30px;
-    }
-
-        #botao-reset:hover{
-            background-color: #b30000;
-        }
-
 </style>
 
 </html>
